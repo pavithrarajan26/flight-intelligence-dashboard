@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #17233b;
+  background: #f4f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --navy: #172b4d;
+  --blue: #3167d5;
+  --blue-dark: #2454b8;
+  --muted: #748198;
+  --line: #e7ecf3;
+  --surface: #ffffff;
+  --green: #16845b;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #f4f7fb; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .65; }
+
+.app-shell { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+.topbar { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e8edf4; }
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--navy); text-decoration: none; font: 800 19px "Manrope", sans-serif; letter-spacing: -.7px; }
+.brand-mark { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 11px; color: white; background: linear-gradient(145deg, #4f83e9, #2456bf); font-size: 19px; }
+.brand-light { color: #6d82a4; font-weight: 500; }
+.connection-pill { display: inline-flex; align-items: center; gap: 8px; color: #58708f; background: white; border: 1px solid #e6edf5; border-radius: 30px; padding: 9px 13px; font-size: 12px; font-weight: 600; }
+.connection-dot, .live-badge span { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: #22ad78; box-shadow: 0 0 0 3px #e2f6ed; }
+
+.hero { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; padding: 65px 0 58px; }
+.eyebrow { margin: 0 0 12px; color: #6680a6; font-size: 10px; font-weight: 700; letter-spacing: 1.45px; }
+.hero h1 { margin: 0; color: #172b4d; font: 800 clamp(38px, 4.3vw, 54px)/1.12 "Manrope", sans-serif; letter-spacing: -2.4px; }
+.hero h1 span { color: #4777d5; }
+.hero-description { max-width: 410px; margin: 19px 0 22px; color: #718097; font-size: 15px; line-height: 1.75; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 17px; color: #58708f; font-size: 11px; font-weight: 600; }
+.search-panel { padding: 25px; background: white; border: 1px solid #e7edf5; border-radius: 17px; box-shadow: 0 14px 45px rgba(36, 61, 101, .08); }
+.search-panel-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.search-panel-heading > div { display: flex; align-items: center; gap: 10px; color: #1b2e4c; font-size: 15px; }
+.search-panel-heading > span { color: #7c8da8; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+.panel-icon { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 9px; color: #3268cf; background: #edf3ff; }
+
+/* ---- One Way / Round Trip segmented control ---- */
+.trip-toggle { display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 20px; background: #eef2f8; border: 1px solid #e0e8f2; border-radius: 11px; }
+.trip-toggle-button { padding: 9px 22px; color: #5b6f8d; background: transparent; border: 0; border-radius: 8px; font-size: 12px; font-weight: 700; transition: background .15s, color .15s, box-shadow .15s; }
+.trip-toggle-button:hover:not(.active) { color: #2f5db8; background: #e2eaf6; }
+.trip-toggle-button.active { color: white; background: linear-gradient(110deg, #3975df, #2d5fc5); box-shadow: 0 3px 10px rgba(48, 99, 202, .3); }
+.trip-toggle-button:focus-visible { outline: 3px solid #bcd0f6; outline-offset: 2px; }
+
+.search-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 13px; }
+/* In one-way mode the departure field is the last field, so let it fill the row. */
+.search-fields.one-way .field:last-child { grid-column: 1 / -1; }
+.field label, .filter-control label { display: block; margin-bottom: 7px; color: #77869b; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+.field input, .filter-control input, .filter-control select, .target-form input { width: 100%; min-width: 0; height: 43px; padding: 0 11px; color: #243653; background: #fbfcfe; border: 1px solid #e3e9f1; border-radius: 8px; outline: none; font-size: 12px; }
+.field input:focus, .filter-control input:focus, .filter-control select:focus, .target-form input:focus { border-color: #7da2ed; box-shadow: 0 0 0 3px #edf3ff; }
+.primary-button { border: 0; border-radius: 8px; color: white; background: linear-gradient(110deg, #3975df, #2d5fc5); font-weight: 700; transition: transform .15s, box-shadow .15s; }
+.primary-button:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 7px 18px rgba(48, 99, 202, .2); }
+.search-button { width: 100%; height: 47px; margin-top: 20px; font-size: 13px; }
+.search-footnote { margin: 11px 0 0; text-align: center; color: #9aa6b8; font-size: 10px; }
+.spinner { display: inline-block; width: 13px; height: 13px; margin-right: 7px; vertical-align: -2px; border: 2px solid #ffffff70; border-top-color: white; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.alert-message { display: flex; flex-direction: column; gap: 4px; margin: 0 0 22px; padding: 14px 17px; border-radius: 10px; font-size: 12px; }
+.error-message { color: #9d3a3a; background: #fff0ef; border: 1px solid #f8d9d6; }
+.success-message { color: #176e50; background: #eaf8f1; border: 1px solid #d1efdf; }
+.results-section { padding-bottom: 40px; }
+.results-title-row, .flight-section-heading, .section-heading-inline { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.results-title-row { margin: 10px 0 23px; }
+.results-title-row h2 { margin: 0; color: #1a2d4c; font: 800 27px "Manrope", sans-serif; letter-spacing: -.8px; }
+.route-arrow { color: #6f91ce; padding: 0 5px; }
+.results-dates { margin: 7px 0 0; color: #8491a4; font-size: 12px; }
+.live-badge { display: inline-flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid #dcefe5; border-radius: 30px; color: #25805e; background: #f4fbf7; font-size: 9px; font-weight: 700; letter-spacing: .8px; }
+.best-deal-card { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 27px; color: white; background: linear-gradient(110deg, #1c3764, #28528e); border-radius: 14px; box-shadow: 0 12px 27px rgba(29, 57, 99, .13); }
+.best-deal-label { color: #c4d8ff; font-size: 9px; font-weight: 700; letter-spacing: 1.1px; }
+.best-deal-label span { color: #f7ce72; margin-right: 5px; }
+.best-deal-main h3 { margin: 9px 0 6px; font: 700 20px "Manrope", sans-serif; }
+.best-deal-main p { margin: 0; color: #d2def0; font-size: 11px; }
+.best-deal-price { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.best-deal-price span, .best-deal-price small { color: #c4d4eb; font-size: 10px; }
+.best-deal-price strong { font: 800 31px "Manrope", sans-serif; }
+.flight-section-heading { margin: 32px 0 14px; }
+.flight-section-heading h3, .tool-card h3, .history-section h3 { margin: 0; color: #1b2e4c; font: 700 17px "Manrope", sans-serif; }
+.flight-section-heading p { margin: 5px 0 0; color: #8995a7; font-size: 11px; }
+.text-button { border: 0; color: #3970d0; background: transparent; font-size: 11px; font-weight: 700; }
+.filter-panel { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 13px; padding: 16px; background: white; border: 1px solid #e8edf4; border-radius: 11px; }
+.filter-control input, .filter-control select { height: 38px; font-size: 11px; }
+.input-with-prefix { position: relative; }
+.input-with-prefix > span { position: absolute; z-index: 1; top: 50%; left: 11px; transform: translateY(-50%); color: #8996a9; font-size: 12px; }
+.input-with-prefix input { padding-left: 25px; }
+.flight-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 13px; }
+.flight-card { display: grid; grid-template-columns: 1.1fr 1.6fr .7fr; align-items: center; gap: 20px; padding: 17px 20px; background: white; border: 1px solid #e8edf4; border-radius: 11px; transition: border-color .15s, transform .15s; }
+.flight-card:hover { transform: translateY(-1px); border-color: #cbd9ef; }
+.flight-card.top-flight { border-color: #9db9ee; box-shadow: inset 3px 0 #4b7fe0; }
+.flight-airline { display: flex; align-items: center; gap: 11px; min-width: 0; }
+.airline-avatar { display: grid; flex: 0 0 37px; place-items: center; width: 37px; height: 37px; border-radius: 10px; color: #3266c6; background: #edf3ff; font-size: 11px; font-weight: 800; }
+.flight-airline > div, .flight-time { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.flight-airline strong { overflow: hidden; color: #263954; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.flight-airline span:not(.airline-avatar) { color: #8b98aa; font-size: 10px; }
+.flight-route { display: grid; grid-template-columns: 1fr 1.25fr 1fr; align-items: center; gap: 12px; }
+.flight-time strong { color: #253955; font: 700 16px "Manrope", sans-serif; }
+.flight-time span { color: #6f7f96; font-size: 10px; font-weight: 700; }
+.route-visual { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #8794a7; font-size: 9px; white-space: nowrap; }
+.route-line { position: relative; width: 100%; height: 1px; background: #cbd5e4; }
+.route-line:before, .route-line:after { position: absolute; top: -3px; width: 7px; height: 7px; border: 1px solid #8da5ca; border-radius: 50%; background: white; content: ""; }
+.route-line:before { left: 0; }
+.route-line:after { right: 0; }
+.route-line i { position: absolute; top: -3px; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: #5d86d1; }
+.route-visual small { font-size: 9px; }
+.flight-card-price { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.flight-card-price strong { color: #1d3150; font: 800 19px "Manrope", sans-serif; }
+.flight-card-price span { color: #8a97a9; font-size: 9px; }
+.flight-card-price em { margin-top: 3px; padding: 4px 7px; color: #217351; background: #eaf8f1; border-radius: 5px; font-size: 9px; font-style: normal; font-weight: 700; }
+.empty-filter, .empty-state { padding: 25px; color: #8290a4; text-align: center; background: white; border: 1px dashed #dce4ef; border-radius: 10px; font-size: 12px; }
+.empty-filter { display: flex; flex-direction: column; gap: 6px; }
+.empty-filter strong { color: #3b4e69; }
+.tracking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 28px; }
+.tool-card { padding: 21px; background: white; border: 1px solid #e8edf4; border-radius: 12px; }
+.tool-card-heading { display: flex; align-items: center; gap: 11px; }
+.tool-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; color: #3971d2; background: #edf3ff; font-size: 19px; }
+.tool-card-heading .eyebrow { margin-bottom: 4px; }
+.tool-card h3 { font-size: 15px; }
+.tool-description { margin: 15px 0; color: #8390a3; font-size: 11px; line-height: 1.6; }
+.full-button { width: 100%; height: 40px; font-size: 11px; }
+.inline-note { margin: 10px 0 0; color: #25805e; font-size: 10px; }
+.target-form { display: flex; gap: 9px; }
+.target-form .input-with-prefix { flex: 1; }
+.target-form input { height: 40px; font-size: 11px; }
+.secondary-button { padding: 0 15px; border: 1px solid #cbd9ef; border-radius: 8px; color: #3268c9; background: #f5f8ff; font-size: 10px; font-weight: 700; }
+.history-section { margin-top: 31px; }
+.section-heading-inline { margin-bottom: 13px; }
+.section-heading-inline .eyebrow { margin-bottom: 5px; }
+.history-low, .alert-count { color: #347b5e; font-size: 10px; font-weight: 700; }
+.history-card { padding: 19px; background: white; border: 1px solid #e8edf4; border-radius: 12px; }
+.history-summary { display: flex; gap: 45px; padding-bottom: 17px; border-bottom: 1px solid #edf0f5; }
+.history-summary > div { display: flex; flex-direction: column; gap: 5px; }
+.history-summary span { color: #8a97a9; font-size: 9px; }
+.history-summary strong { color: #263b5a; font: 700 17px "Manrope", sans-serif; }
+.history-bars { display: flex; align-items: flex-end; gap: 12px; height: 150px; overflow-x: auto; padding: 16px 5px 0; border-bottom: 1px solid #edf0f5; }
+.history-bar-column { display: flex; flex: 1 0 42px; flex-direction: column; align-items: center; justify-content: flex-end; gap: 5px; height: 100%; }
+.history-bar-column > strong { color: #7d8ba0; font-size: 9px; }
+.history-bar-track { display: flex; align-items: flex-end; justify-content: center; width: 24px; height: 100%; }
+.history-bar-track i { display: block; width: 100%; min-height: 8px; border-radius: 5px 5px 0 0; background: linear-gradient(180deg, #80a7ed, #4778d2); }
+.history-bar-column > span { padding-top: 4px; color: #9aa5b4; font-size: 9px; }
+.history-records { margin-top: 7px; }
+.history-record { display: flex; align-items: center; justify-content: space-between; padding: 11px 2px; border-bottom: 1px solid #f0f2f6; }
+.history-record:last-child { border-bottom: 0; }
+.history-record > div { display: flex; flex-direction: column; gap: 4px; }
+.history-record strong { color: #344864; font-size: 11px; }
+.history-record span { color: #97a2b1; font-size: 9px; }
+.history-record > strong { font: 700 13px "Manrope", sans-serif; }
+.alert-list { display: flex; flex-direction: column; gap: 8px; }
+.saved-alert { display: flex; align-items: center; gap: 12px; padding: 13px 15px; background: white; border: 1px solid #e8edf4; border-radius: 10px; }
+.alert-symbol { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 9px; color: #3971d2; background: #edf3ff; }
+.saved-alert-info { display: flex; flex: 1; flex-direction: column; gap: 4px; }
+.saved-alert-info strong { color: #334762; font-size: 11px; }
+.saved-alert-info span { color: #8a97a9; font-size: 10px; }
+.delete-button { padding: 7px 10px; color: #a15c5c; background: #fff7f6; border: 1px solid #f3e2df; border-radius: 7px; font-size: 10px; font-weight: 600; }
+.empty-welcome { margin: 0 0 45px; padding: 37px 20px; text-align: center; background: white; border: 1px solid #e8edf4; border-radius: 14px; }
+.welcome-icon { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 13px; border-radius: 14px; color: #3971d2; background: #edf3ff; font-size: 24px; }
+.empty-welcome h2 { margin: 0; color: #203653; font: 700 20px "Manrope", sans-serif; }
+.empty-welcome p { max-width: 490px; margin: 9px auto 18px; color: #8793a5; font-size: 12px; line-height: 1.7; }
+.welcome-features { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; color: #6680a6; font-size: 10px; font-weight: 600; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 22px 0 27px; border-top: 1px solid #e7ecf3; color: #929eae; font-size: 10px; }
+.footer strong { color: #61728c; font-size: 11px; }
+
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; padding: 43px 0; }
+  .hero-copy { max-width: 600px; }
+  .flight-card { grid-template-columns: 1fr 1.4fr .65fr; gap: 12px; padding: 15px; }
+  .flight-route { gap: 7px; }
+}
+@media (max-width: 620px) {
+  .app-shell { width: min(100% - 28px, 520px); }
+  .topbar { height: 68px; }
+  .brand { font-size: 16px; }
+  .connection-pill { padding: 7px 9px; font-size: 10px; }
+  .hero { padding: 35px 0; }
+  .hero h1 { font-size: 40px; }
+  .search-panel { padding: 18px; }
+  .trip-toggle { display: flex; width: 100%; }
+  .trip-toggle-button { flex: 1; padding: 10px 12px; }
+  .search-fields, .filter-panel, .tracking-grid { grid-template-columns: 1fr 1fr; }
+  .results-title-row h2 { font-size: 21px; }
+  .live-badge { font-size: 8px; }
+  .best-deal-card { align-items: flex-start; padding: 19px; }
+  .best-deal-main h3 { font-size: 16px; }
+  .best-deal-main p { max-width: 210px; line-height: 1.6; }
+  .best-deal-price strong { font-size: 24px; }
+  .flight-card { grid-template-columns: 1fr auto; gap: 13px; }
+  .flight-route { grid-column: 1 / -1; grid-row: 2; }
+  .flight-card-price { grid-column: 2; grid-row: 1; }
+  .history-summary { gap: 20px; flex-wrap: wrap; }
+  .footer { align-items: flex-start; flex-direction: column; gap: 6px; }
+}
+@media (max-width: 390px) {
+  .search-fields, .filter-panel, .tracking-grid { grid-template-columns: 1fr; }
+  .search-fields.one-way .field:last-child { grid-column: auto; }
+  .best-deal-card { flex-direction: column; }
+  .best-deal-price { align-items: flex-start; }
+  .results-title-row { align-items: flex-start; flex-direction: column; }
+}
