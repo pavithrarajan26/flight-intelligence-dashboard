@@ -97,3 +97,7 @@ Open the local URL displayed by Vite in your browser.
 Computer Science and Engineering Student
 
 [GitHub](https://github.com/pavithrarajan26)
+
+## Dashboard Preview
+
+![Flight Intelligence Dashboard](flightdashboard.png)
